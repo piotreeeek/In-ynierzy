@@ -51,13 +51,12 @@ public class Inzynier {
         this.plec = plec;
         this.certyfikat = new ArrayList<String>();
     }
-    public Inzynier(String imie, String nazwisko, int wiek, int plec, String certyfikat){
+    public Inzynier(String imie, String nazwisko, int wiek, int plec, List<String> certyfikat){
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.wiek = wiek;
         this.plec = plec;
-        this.certyfikat = new ArrayList<String>();
-        this.certyfikat.add(certyfikat);
+        this.certyfikat = certyfikat;
     }
     public Inzynier(Inzynier inz){
         wiek = inz.wiek;
@@ -66,7 +65,6 @@ public class Inzynier {
         nazwisko = inz.nazwisko;
         certyfikat = inz.certyfikat;
     }
-
 
     public int getWiek(){
         return wiek;
@@ -95,6 +93,9 @@ public class Inzynier {
     public void setNazwisko(String nazwisko){
         this.nazwisko = nazwisko;
     }
+    public void setCertyfikat(ArrayList<String> certyfikat){
+        this.certyfikat = certyfikat;
+    }
     public void addCertyfikat(String certyfikat){
         this.certyfikat.add(certyfikat);
     }
@@ -110,7 +111,15 @@ public class Inzynier {
         this.certyfikat.add(certyfikat);
     }
     public void printDane() {
-        System.out.println("Imie:" + imie + " Nazwisko:" + nazwisko + " wiek:" + wiek + " Płeć:" + plec + "\n Certyfikaty:");
+        String printPlec;
+        if (plec == 1){
+            printPlec = "Meżczyzna";
+        }else if(plec == 2){
+            printPlec = "Kobieta";
+        }else {
+            printPlec = "niezidentyfikowana";
+        }
+        System.out.println("Imie:" + imie + " Nazwisko:" + nazwisko + " wiek:" + wiek + " Płeć:" + printPlec + "\n Certyfikaty:");
         for(String crt: certyfikat) {
             System.out.println(crt);
         }
